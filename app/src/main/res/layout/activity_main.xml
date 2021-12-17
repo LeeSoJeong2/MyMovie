@@ -19,93 +19,113 @@
             android:orientation="vertical"
             android:background="#EEEEEE">
             <!-- 포스터, 제목, 개봉일, 좋아요 -->
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/titleLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@drawable/thumbnail_base"
                 android:padding="10dp">
+
                 <ImageView
+                    android:id="@+id/posterImg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image11"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="군도"
-                            android:textColor="@color/white"
-                            android:textSize="25dp"
-                            android:textStyle="bold"/>
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_15"
-                            android:paddingLeft="10dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="10dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2014.07.23 개봉"
-                            android:textColor="@color/white"
-                            android:textSize="20dp" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="액션 / 137 분"
-                            android:textColor="@color/white"
-                            android:textSize="20dp" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="10dp">
-                        <Button
-                            android:id="@+id/likeBtn"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/thumb_up"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="5dp"/>
-                        <Button
-                            android:id="@+id/unlikeBtn"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/thumb_down"
-                            android:layout_marginLeft="20dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1"
-                            android:textColor="@color/white"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:layout_marginLeft="5dp"/>
-                    </LinearLayout>
-                </LinearLayout>
+                    android:src="@drawable/image11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/titleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="32dp"
+                    android:text="군도"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/posterImg"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ageImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/ic_15"
+                    app:layout_constraintStart_toEndOf="@+id/titleText"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/dateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="2014.07.23 개봉"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/posterImg"
+                    app:layout_constraintTop_toBottomOf="@+id/titleText" />
+
+                <TextView
+                    android:id="@+id/genreText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="액션 / 137 분"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toEndOf="@+id/posterImg"
+                    app:layout_constraintTop_toBottomOf="@+id/dateText" />
+
+                <Button
+                    android:id="@+id/likeBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/thumb_up"
+                    app:layout_constraintStart_toEndOf="@+id/posterImg"
+                    app:layout_constraintTop_toBottomOf="@+id/genreText" />
+
+                <TextView
+                    android:id="@+id/likeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="15"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/likeBtn"
+                    app:layout_constraintTop_toBottomOf="@+id/genreText" />
+
+                <Button
+                    android:id="@+id/unlikeBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/thumb_down"
+                    app:layout_constraintStart_toEndOf="@+id/likeText"
+                    app:layout_constraintTop_toBottomOf="@+id/genreText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/unlikeBtn"
+                    app:layout_constraintTop_toBottomOf="@+id/genreText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- 예매율, 평점, 누적관객수 -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -217,58 +237,65 @@
                     android:padding="10dp"/>
             </LinearLayout>
             <!-- 감독/출연 -->
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="10dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_marginBottom="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/directorText"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:background="@color/white">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="감독"
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="16dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="윤종빈"
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="16dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="감독"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/directorNameText"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:background="@color/white">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="출연"
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="16dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="하정우(도치), 강동원(조윤)"
-                        android:textColor="@color/black"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="5dp"
-                        android:textSize="16dp"/>
-                </LinearLayout>
-            </LinearLayout>
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="윤종빈"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/directorText"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/actorText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="출연"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/directorText"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <TextView
+                    android:id="@+id/actorNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="하정우(도치), 강동원(조윤)"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/directorText"
+                    app:layout_constraintStart_toEndOf="@+id/actorText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- 한줄평 -->
             <RelativeLayout
                 android:layout_width="match_parent"
