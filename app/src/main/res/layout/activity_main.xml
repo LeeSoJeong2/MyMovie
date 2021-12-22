@@ -115,6 +115,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/genreText" />
 
                 <TextView
+                    android:id="@+id/unlikeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
@@ -310,6 +311,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@color/white"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -329,20 +331,34 @@
                     android:layout_marginEnd="0dp"
                     android:layout_toStartOf="@+id/writeBtn"
                     android:src="@drawable/ic_review_selected" />
+
                 <Button
                     android:id="@+id/writeBtn"
-                    android:background="#00000000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="10dp"
+                    android:background="#00000000"
                     android:text="작성하기"
                     android:textColor="@color/orange"
                     android:textSize="17dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commentView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/showBtn"
+                    android:layout_below="@+id/writeBtn"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp" />
+
                 <Button
                     android:id="@+id/showBtn"
                     android:layout_width="match_parent"
