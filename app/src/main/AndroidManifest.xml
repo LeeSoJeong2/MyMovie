@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyMovie">
         <activity
+            android:name=".CommentListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CommentWriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

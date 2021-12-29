@@ -174,16 +174,17 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:gravity="center">
+
                         <RatingBar
                             android:id="@+id/ratingBar"
                             style="@style/Widget.AppCompat.RatingBar.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingTop="5dp"
-                            android:rating="4.1"
-                            android:numStars="5"
                             android:isIndicator="true"
-                            />
+                            android:numStars="5"
+                            android:paddingTop="5dp"
+                            android:rating="4.1" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -242,7 +243,7 @@
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/summaryTitle"/>
+                    app:layout_constraintTop_toBottomOf="@id/summaryTitle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- 감독/출연 -->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -350,10 +351,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/commentView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_above="@+id/showBtn"
                     android:layout_below="@+id/writeBtn"
-                    android:layout_margin="10dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"

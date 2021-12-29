@@ -4,15 +4,16 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
-class CommentItem(var id:String, var time:String, var rating:Float, var comment:String)
+class CommentItem(var id:String, var time:String, var rating:Float, var comment: String?)
 
-class CommentAdapter(var context: Context) :
+class CommentAdapter(var context: Context, var items: ArrayList<CommentItem>) :
     RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
-    var items = ArrayList<CommentItem>()
+//    var items = ArrayList<CommentItem>()
 
     override fun getItemCount(): Int {
         return items.size
@@ -30,7 +31,7 @@ class CommentAdapter(var context: Context) :
     }
 
     fun addItem(item: CommentItem) {
-        items.add(item)
+        items.add(0, item)
     }
 
     fun addItems(items: ArrayList<CommentItem>) {
@@ -42,15 +43,24 @@ class CommentAdapter(var context: Context) :
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textView: TextView
+        var commentText: TextView
+        var userId: TextView
+        var commentTime: TextView
+        var ratingBar: RatingBar
 
         fun setItem(item: CommentItem) {
-            textView.setText(item.comment)
+            commentText.setText(item.comment)
+            userId.setText(item.id)
+            commentTime.setText(item.time)
+            ratingBar.rating = item.rating
 
         }
 
         init {
-            textView = itemView.findViewById<View>(R.id.commentText) as TextView
+            commentText = itemView.findViewById<View>(R.id.commentText) as TextView
+            userId = itemView.findViewById<View>(R.id.userId) as TextView
+            commentTime = itemView.findViewById<View>(R.id.commentTime) as TextView
+            ratingBar = itemView.findViewById<View>(R.id.ratingBar) as RatingBar
         }
     }
 }
