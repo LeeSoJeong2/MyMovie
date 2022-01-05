@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mymovie.databinding.CommentItemBinding
 import java.util.ArrayList
 
 class CommentItem(var id:String, var time:String, var rating:Float, var comment: String?)
@@ -19,11 +20,8 @@ class CommentAdapter(var context: Context, var items: ArrayList<CommentItem>) :
         return items.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val itemView = inflater.inflate(R.layout.comment_item, parent, false)
-        return ViewHolder(itemView)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder = ViewHolder(
+        CommentItemBinding.inflate(LayoutInflater.from(parent.context)))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
@@ -42,7 +40,7 @@ class CommentAdapter(var context: Context, var items: ArrayList<CommentItem>) :
         return items[position]
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(val binding: CommentItemBinding) : RecyclerView.ViewHolder(binding.root) {
         var commentText: TextView
         var userId: TextView
         var commentTime: TextView
