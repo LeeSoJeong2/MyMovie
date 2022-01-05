@@ -12,22 +12,23 @@ import com.example.mymovie.databinding.ActivityCommentListBinding
 import com.example.mymovie.databinding.ActivityCommentWriteBinding
 
 class CommentWriteActivity : AppCompatActivity() {
+    lateinit var binding: ActivityCommentWriteBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityCommentWriteBinding.inflate(layoutInflater)
+        binding = ActivityCommentWriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.saveButton.setOnClickListener { saveComment(binding.contentsInput, binding.ratingBar) }
+        binding.saveButton.setOnClickListener { saveComment() }
 
         binding.cancelButton.setOnClickListener{ finish() }
 
     }
 
-    fun saveComment(contentsInput:TextView, ratingBar: RatingBar) {
-        val contents = contentsInput!!.text.toString()
-        val rating = ratingBar!!.rating
+    fun saveComment() {
+        val contents = binding.contentsInput.text.toString()
+        val rating = binding.ratingBar.rating
         val intent = Intent()
 
         intent.putExtra("contents", contents)

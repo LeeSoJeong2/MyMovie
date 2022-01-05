@@ -13,6 +13,7 @@ import com.example.mymovie.databinding.ActivityMainBinding
 var items = ArrayList<CommentItem>()
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     var likeCount = 0
     var likeState = false
     var unlikeCount = 0
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // 바인딩 객체 획득
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
         // 액티비티 화면 출력
         setContentView(binding.root)
@@ -33,14 +34,14 @@ class MainActivity : AppCompatActivity() {
         // 좋아요 버튼 클릭 이벤트
         binding.likeBtn.setOnClickListener {
             if (likeState) {
-                decrLikeCount(binding.likeBtn, binding.likeText)
+                decrLikeCount()
             } else {
-                incrLikeCount(binding.likeBtn, binding.likeText)
+                incrLikeCount()
             }
             likeState = !likeState
 
             if (unlikeState) {
-                decrUnlikeCount(binding.unlikeBtn, binding.unlikeText)
+                decrUnlikeCount()
                 unlikeState = !unlikeState
             }
         }
@@ -49,14 +50,14 @@ class MainActivity : AppCompatActivity() {
         // 싫어요 버튼 클릭 이벤트
         binding.unlikeBtn.setOnClickListener {
             if (unlikeState) {
-                decrUnlikeCount(binding.unlikeBtn, binding.unlikeText)
+                decrUnlikeCount()
             } else {
-                incrUnlikeCount(binding.unlikeBtn, binding.unlikeText)
+                incrUnlikeCount()
             }
             unlikeState = !unlikeState
 
             if (likeState) {
-                decrLikeCount(binding.likeBtn, binding.likeText)
+                decrLikeCount()
                 likeState = !likeState
             }
         }
@@ -83,28 +84,28 @@ class MainActivity : AppCompatActivity() {
         binding.showBtn.setOnClickListener{ showCommentListActivity() }
 
     }
-    fun incrLikeCount(likeBtn: Button, likeText: TextView) {
+    fun incrLikeCount() {
         likeCount += 1
-        likeText.text = likeCount.toString()
-        likeBtn.setBackgroundResource(R.drawable.ic_thumb_up_selected)
+        binding.likeText.text = likeCount.toString()
+        binding.likeBtn.setBackgroundResource(R.drawable.ic_thumb_up_selected)
     }
 
-    fun decrLikeCount(likeBtn: Button, likeText: TextView) {
+    fun decrLikeCount() {
         likeCount -= 1
-        likeText.text = likeCount.toString()
-        likeBtn.setBackgroundResource(R.drawable.ic_thumb_up)
+        binding.likeText.text = likeCount.toString()
+        binding.likeBtn.setBackgroundResource(R.drawable.ic_thumb_up)
     }
 
-    fun incrUnlikeCount(unlikeBtn: Button, unlikeText: TextView) {
+    fun incrUnlikeCount() {
         unlikeCount += 1
-        unlikeText.text = unlikeCount.toString()
-        unlikeBtn.setBackgroundResource(R.drawable.ic_thumb_down_selected)
+        binding.unlikeText.text = unlikeCount.toString()
+        binding.unlikeBtn.setBackgroundResource(R.drawable.ic_thumb_down_selected)
     }
 
-    fun decrUnlikeCount(unlikeBtn: Button, unlikeText: TextView) {
+    fun decrUnlikeCount() {
         unlikeCount -= 1
-        unlikeText.text = unlikeCount.toString()
-        unlikeBtn.setBackgroundResource(R.drawable.ic_thumb_down)
+        binding.unlikeText.text = unlikeCount.toString()
+        binding.unlikeBtn.setBackgroundResource(R.drawable.ic_thumb_down)
     }
 
     fun showCommentWriteActivity() {

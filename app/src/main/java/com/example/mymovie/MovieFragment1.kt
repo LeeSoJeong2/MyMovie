@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment
 import com.example.mymovie.databinding.FragmentMovie1Binding
 
 class MovieFragment1 : Fragment() {
+    lateinit var binding: FragmentMovie1Binding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentMovie1Binding.inflate(inflater, container, false)
+        binding = FragmentMovie1Binding.inflate(inflater, container, false)
 
         binding.detailBtn.setOnClickListener{ showMainActivity() }
 
