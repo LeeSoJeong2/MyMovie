@@ -7,27 +7,27 @@ import android.view.View
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mymovie.databinding.ActivityCommentListBinding
+import com.example.mymovie.databinding.ActivityMainBinding
 
 class CommentListActivity : AppCompatActivity() {
-    var commentView: RecyclerView? = null
-    var writeButton: Button? = null
     var adapter: CommentAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_comment_list)
 
-        commentView = findViewById<View>(R.id.commentView) as RecyclerView
+        val binding = ActivityCommentListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        commentView!!.layoutManager = layoutManager
+        binding.commentView.layoutManager = layoutManager
 
         adapter = CommentAdapter(applicationContext, items)
-        commentView!!.adapter = adapter
+        binding.commentView.adapter = adapter
 
         // 한줄평 작성하기
-        writeButton = findViewById<View>(R.id.writeBtn) as Button
-        writeButton!!.setOnClickListener{ showCommentWriteActivity() }
+        binding.writeBtn.setOnClickListener{ showCommentWriteActivity() }
     }
 
     fun showCommentWriteActivity() {

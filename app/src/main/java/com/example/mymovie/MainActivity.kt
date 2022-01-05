@@ -8,69 +8,63 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mymovie.databinding.ActivityMainBinding
+
 var items = ArrayList<CommentItem>()
 
 class MainActivity : AppCompatActivity() {
-    var likeButton: Button? = null
-    var likeCountView: TextView? = null
     var likeCount = 0
     var likeState = false
-    var unlikeButton: Button? = null
-    var unlikeCountView: TextView? = null
     var unlikeCount = 0
     var unlikeState = false
-    var commentView: RecyclerView? = null
-    var writeButton: Button? = null
-    var showButton: Button? = null
     var adapter:CommentAdapter? = null
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        // 바인딩 객체 획득
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+
+        // 액티비티 화면 출력
+        setContentView(binding.root)
 
         // 좋아요 버튼 클릭 이벤트
-        likeButton = findViewById<View>(R.id.likeBtn) as Button
-        likeButton!!.setOnClickListener {
+        binding.likeBtn.setOnClickListener {
             if (likeState) {
-                decrLikeCount()
+                decrLikeCount(binding.likeBtn, binding.likeText)
             } else {
-                incrLikeCount()
+                incrLikeCount(binding.likeBtn, binding.likeText)
             }
             likeState = !likeState
 
             if (unlikeState) {
-                decrUnlikeCount()
+                decrUnlikeCount(binding.unlikeBtn, binding.unlikeText)
                 unlikeState = !unlikeState
             }
         }
-
-        likeCountView = findViewById<View>(R.id.likeText) as TextView
-        likeCount = (likeCountView!!.text).toString().toInt()
+        likeCount = (binding.likeText.text).toString().toInt()
 
         // 싫어요 버튼 클릭 이벤트
-        unlikeButton = findViewById<View>(R.id.unlikeBtn) as Button
-        unlikeButton!!.setOnClickListener {
+        binding.unlikeBtn.setOnClickListener {
             if (unlikeState) {
-                decrUnlikeCount()
+                decrUnlikeCount(binding.unlikeBtn, binding.unlikeText)
             } else {
-                incrUnlikeCount()
+                incrUnlikeCount(binding.unlikeBtn, binding.unlikeText)
             }
             unlikeState = !unlikeState
 
             if (likeState) {
-                decrLikeCount()
+                decrLikeCount(binding.likeBtn, binding.likeText)
                 likeState = !likeState
             }
         }
-
-        unlikeCountView = findViewById<View>(R.id.unlikeText) as TextView
-        unlikeCount = (unlikeCountView!!.text).toString().toInt()
+        unlikeCount = (binding.unlikeText.text).toString().toInt()
 
         // 한줄평 (recycler View)
-        commentView = findViewById<View>(R.id.commentView) as RecyclerView
-
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        commentView!!.layoutManager = layoutManager
+        binding.commentView.layoutManager = layoutManager
 
         adapter = CommentAdapter(applicationContext, items)
 
@@ -80,39 +74,37 @@ class MainActivity : AppCompatActivity() {
         adapter!!.addItem(CommentItem("sales**", "15분전", 5.0f, "마지막이 비극인 영화."))
         adapter!!.addItem(CommentItem("pargo**", "9분전", 5.0f, "스트레스가 해소되는 영화네요."))
 
-        commentView!!.adapter = adapter
+        binding.commentView.adapter = adapter
 
         // 한줄평 작성하기
-        writeButton = findViewById<View>(R.id.writeBtn) as Button
-        writeButton!!.setOnClickListener{ showCommentWriteActivity() }
+        binding.writeBtn.setOnClickListener{ showCommentWriteActivity() }
 
         // 한줄평 모두보기
-        showButton = findViewById<View>(R.id.showBtn) as Button
-        showButton!!.setOnClickListener{ showCommentListActivity() }
+        binding.showBtn.setOnClickListener{ showCommentListActivity() }
 
     }
-    fun incrLikeCount() {
+    fun incrLikeCount(likeBtn: Button, likeText: TextView) {
         likeCount += 1
-        likeCountView!!.text = likeCount.toString()
-        likeButton!!.setBackgroundResource(R.drawable.ic_thumb_up_selected)
+        likeText.text = likeCount.toString()
+        likeBtn.setBackgroundResource(R.drawable.ic_thumb_up_selected)
     }
 
-    fun decrLikeCount() {
+    fun decrLikeCount(likeBtn: Button, likeText: TextView) {
         likeCount -= 1
-        likeCountView!!.text = likeCount.toString()
-        likeButton!!.setBackgroundResource(R.drawable.ic_thumb_up)
+        likeText.text = likeCount.toString()
+        likeBtn.setBackgroundResource(R.drawable.ic_thumb_up)
     }
 
-    fun incrUnlikeCount() {
+    fun incrUnlikeCount(unlikeBtn: Button, unlikeText: TextView) {
         unlikeCount += 1
-        unlikeCountView!!.text = unlikeCount.toString()
-        unlikeButton!!.setBackgroundResource(R.drawable.ic_thumb_down_selected)
+        unlikeText.text = unlikeCount.toString()
+        unlikeBtn.setBackgroundResource(R.drawable.ic_thumb_down_selected)
     }
 
-    fun decrUnlikeCount() {
+    fun decrUnlikeCount(unlikeBtn: Button, unlikeText: TextView) {
         unlikeCount -= 1
-        unlikeCountView!!.text = unlikeCount.toString()
-        unlikeButton!!.setBackgroundResource(R.drawable.ic_thumb_down)
+        unlikeText.text = unlikeCount.toString()
+        unlikeBtn.setBackgroundResource(R.drawable.ic_thumb_down)
     }
 
     fun showCommentWriteActivity() {

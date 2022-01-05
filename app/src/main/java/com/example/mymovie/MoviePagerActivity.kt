@@ -9,18 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.mymovie.databinding.ActivityMainBinding
+import com.example.mymovie.databinding.ActivityMoviePagerBinding
 import java.util.ArrayList
 
 class MoviePagerActivity : AppCompatActivity() {
-    var pager: ViewPager? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movie_pager)
 
-        pager = findViewById<View>(R.id.pager) as ViewPager
-        pager!!.offscreenPageLimit = 6
+        val binding = ActivityMoviePagerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.pager.offscreenPageLimit = 6
 
         val adapter = MoviePagerAdapter(supportFragmentManager)
 
@@ -42,9 +43,7 @@ class MoviePagerActivity : AppCompatActivity() {
         val fragment6 = MovieFragment6()
         adapter.addItem(fragment6)
 
-        pager!!.adapter = adapter
-
-
+        binding.pager.adapter = adapter
     }
 
     internal class MoviePagerAdapter(fm: FragmentManager) :

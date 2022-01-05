@@ -7,27 +7,25 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RatingBar
+import android.widget.TextView
+import com.example.mymovie.databinding.ActivityCommentListBinding
+import com.example.mymovie.databinding.ActivityCommentWriteBinding
 
 class CommentWriteActivity : AppCompatActivity() {
-    var ratingBar: RatingBar? = null
-    var contentsInput: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_comment_write)
 
-        ratingBar = findViewById<View>(R.id.ratingBar) as RatingBar
-        contentsInput = findViewById<View>(R.id.contentsInput) as EditText
+        val binding = ActivityCommentWriteBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val saveButton = findViewById<View>(R.id.saveButton) as Button
-        saveButton.setOnClickListener { saveComment() }
+        binding.saveButton.setOnClickListener { saveComment(binding.contentsInput, binding.ratingBar) }
 
-        val cancelButton = findViewById<View>(R.id.cancelButton) as Button
-        cancelButton.setOnClickListener{ finish() }
+        binding.cancelButton.setOnClickListener{ finish() }
 
     }
 
-    fun saveComment() {
+    fun saveComment(contentsInput:TextView, ratingBar: RatingBar) {
         val contents = contentsInput!!.text.toString()
         val rating = ratingBar!!.rating
         val intent = Intent()

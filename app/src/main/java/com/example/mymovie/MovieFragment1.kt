@@ -7,27 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.mymovie.databinding.FragmentMovie1Binding
 
 class MovieFragment1 : Fragment() {
-    var detailButton: Button? = null
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_movie1, container, false) as ViewGroup
+        val binding = FragmentMovie1Binding.inflate(inflater, container, false)
 
-        detailButton = rootView.findViewById<View>(R.id.detailBtn) as Button
-        detailButton!!.setOnClickListener{ showMainActivity() }
+        binding.detailBtn.setOnClickListener{ showMainActivity() }
 
-        return rootView
+        return binding.root
     }
 
     fun showMainActivity() {
         val intent = Intent(super.getContext(), MainActivity::class.java)
 
-        startActivityForResult(intent, 102)
+        startActivity(intent)
     }
 
 }

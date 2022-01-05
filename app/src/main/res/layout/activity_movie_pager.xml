@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MoviePagerActivity"
     android:background="@drawable/main_background">
-
+                                                                                    
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
