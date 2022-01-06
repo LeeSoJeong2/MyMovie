@@ -27,6 +27,15 @@
         app:layout_constraintStart_toEndOf="@+id/titleText"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/ic_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -83,52 +92,13 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/ratingBar">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:text="한줄평"
-            android:textColor="@color/black"
-            android:textSize="17dp"
-            android:textStyle="bold" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="0dp"
-            android:layout_toStartOf="@+id/writeBtn"
-            android:src="@drawable/ic_review_selected" />
-
-        <Button
-            android:id="@+id/writeBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="10dp"
-            android:background="#00000000"
-            android:text="작성하기"
-            android:textColor="@color/orange"
-            android:textSize="17dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/commentView"
+        <fragment
+            android:id="@+id/commentList"
+            android:name="com.example.mymovie.CommentListFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/writeBtn"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_height="match_parent" />
 
-         </RelativeLayout>
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
