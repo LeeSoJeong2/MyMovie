@@ -12,9 +12,8 @@ import java.util.ArrayList
 
 data class CommentItem(var id:String, var time:String, var rating:Float, var comment: String?)
 
-class CommentAdapter(var context: Context?) :
-    RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
-    private var items = ArrayList<CommentItem>()
+class CommentAdapter(var context: Context?) : RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
+    private val items = ArrayList<CommentItem>()
 
     init {
         items.add(CommentItem("kym71**", "19분전", 5.0f, "적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요."))

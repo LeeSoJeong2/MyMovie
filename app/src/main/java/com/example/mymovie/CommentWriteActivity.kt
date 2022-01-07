@@ -1,6 +1,5 @@
 package com.example.mymovie
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mymovie.databinding.ActivityCommentWriteBinding
@@ -22,11 +21,10 @@ class CommentWriteActivity : AppCompatActivity() {
     private fun saveComment() {
         val contents = binding.contentsInput.text.toString()
         val rating = binding.ratingBar.rating
-        val intent = Intent()
 
-        intent.putExtra("contents", contents)
-        intent.putExtra("rating", rating)
-        setResult(RESULT_OK, intent)
+        MainActivity.adapter.addItem(CommentItem("kym71**", "0분전", rating, contents))
+        MainActivity.adapter.notifyDataSetChanged()
+
         finish()
     }
 }

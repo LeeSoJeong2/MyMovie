@@ -27,7 +27,7 @@ class MoviePagerFragment : Fragment(), ChangeMovieDetailFragment {
         val fragmentManager: FragmentManager = parentFragmentManager
         val transaction: FragmentTransaction = fragmentManager.beginTransaction()
         val fragment = MovieDetailFragment()
-        transaction.add(R.id.fragment_content, fragment, "MovieDetail")
+        transaction.replace(R.id.fragment_content, fragment, "MovieDetail")
         transaction.commit()
     }
 
