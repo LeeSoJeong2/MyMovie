@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.mymovie.databinding.FragmentFullCommentListBinding
 
-class FullCommentListFragment : Fragment() {
+class FullCommentListFragment() : Fragment() {
     private lateinit var binding: FragmentFullCommentListBinding
 
     override fun onCreateView(

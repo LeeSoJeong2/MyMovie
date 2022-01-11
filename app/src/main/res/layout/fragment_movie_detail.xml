@@ -21,9 +21,8 @@
 
             <ImageView
                 android:id="@+id/posterImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/image11"
+                android:layout_width="150dp"
+                android:layout_height="220dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -149,6 +148,7 @@
                     android:textColor="@color/black"
                     android:textSize="18dp" />
                 <TextView
+                    android:id="@+id/reservationRate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5위 1.8%"
@@ -187,9 +187,11 @@
                         android:rating="4.1" />
 
                     <TextView
+                        android:id="@+id/ratingText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8.2"
+                        android:text="8.25"
+                        android:textSize="13sp"
                         android:textColor="@color/black"/>
                 </LinearLayout>
             </LinearLayout>
@@ -208,6 +210,7 @@
                     android:textColor="@color/black"
                     android:textSize="18dp" />
                 <TextView
+                    android:id="@+id/audience"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="839,399명"
